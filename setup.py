@@ -1,16 +1,16 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.0.2'
+version = '0.0.1'
 
 TESTS_REQUIRE = [
     'sparc.testing',
     'zope.testrunner'
     ]
 
-setup(name='sparc.configuration',
+setup(name='sparc.configuration.container',
       version=version,
-      description="Configuration components for the SPARC platform",
+      description="Configuration container components for the SPARC platform",
       long_description=open("README.md").read() + "\n" +
                        open("HISTORY.txt").read(),
       # Get more strings from
@@ -28,7 +28,7 @@ setup(name='sparc.configuration',
       keywords=['zca'],
       author='David Davis',
       author_email='davisd50@gmail.com',
-      url='https://github.com/davisd50/sparc.configuration',
+      url='https://github.com/davisd50/sparc.configuration.container',
       download_url = '',
       license='MIT',
       packages=find_packages(exclude=['ez_setup']),
@@ -39,15 +39,7 @@ setup(name='sparc.configuration',
         },
       zip_safe=False,
       install_requires=[
-          'setuptools',
-          'pyaml',
-          'zope.interface',
-          'zope.component',
-          'zope.configuration',
-          'zope.schema',
-          'zope.security',
-          'sparc.proxy'
-          # -*- Extra requirements: -*-
+          'setuptools'
       ],
       tests_require=TESTS_REQUIRE,
       extras_require={
