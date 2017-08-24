@@ -28,11 +28,11 @@ setup(name='sparc.config',
       keywords=['zca'],
       author='David Davis',
       author_email='davisd50@gmail.com',
-      url='https://github.com/davisd50/sparc.config.container',
+      url='https://github.com/davisd50/sparc.config',
       download_url = '',
       license='MIT',
       packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['sparc','sparc.container'],
+      namespace_packages=['sparc'],
       include_package_data=True,
       package_data = {
           '': ['*.zcml']
