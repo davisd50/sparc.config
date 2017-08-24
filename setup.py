@@ -8,9 +8,9 @@ TESTS_REQUIRE = [
     'zope.testrunner'
     ]
 
-setup(name='sparc.configuration.container',
+setup(name='sparc.config',
       version=version,
-      description="Configuration container components for the SPARC platform",
+      description="Config components for the SPARC platform",
       long_description=open("README.md").read() + "\n" +
                        open("HISTORY.txt").read(),
       # Get more strings from
@@ -28,18 +28,21 @@ setup(name='sparc.configuration.container',
       keywords=['zca'],
       author='David Davis',
       author_email='davisd50@gmail.com',
-      url='https://github.com/davisd50/sparc.configuration.container',
+      url='https://github.com/davisd50/sparc.config.container',
       download_url = '',
       license='MIT',
       packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['sparc'],
+      namespace_packages=['sparc','sparc.container'],
       include_package_data=True,
       package_data = {
           '': ['*.zcml']
         },
       zip_safe=False,
       install_requires=[
-          'setuptools'
+          'setuptools',
+          'zope.interface',
+          'zope.component',
+          'pyaml'
       ],
       tests_require=TESTS_REQUIRE,
       extras_require={
