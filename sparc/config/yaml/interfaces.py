@@ -1,23 +1,16 @@
 from zope import interface
 
-class ISparcYamlDocuments(interface.Interface):
-    def documents(config):
-        """Generator of 
-        sparc.configuration.container.ISparcAppPyContainerConfiguration objects
-        based on config
-        
-        All Python container based items within the top level 
-        ISparcAppPyContainerConfiguration will also be marked as
-        ISparcAppPyContainerConfiguration objects.
+class ISparcYamlConfigContainers(interface.Interface):
+    def containers(yaml_config):
+        """Generator of sparc.config.IConfigContainer providers
         
         Args:
-            config: Unicode valid file path to a Yaml configuration or a valid
-                    Yaml content string.
+            yaml_config: Unicode valid file path to a Yaml configuration or a 
+                         valid Yaml content string.
         """
-    def first(config):
-        """sparc.configuration.container.ISparcAppPyContainerConfiguration 
-        object for first document in config
+    def first(yaml_config):
+        """first sparc.config.IConfigContainer provider in yaml_config
         
         Args:
-            config: [same as documents()]
+            yaml_config: [same as documents()]
         """

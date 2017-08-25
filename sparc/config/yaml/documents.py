@@ -2,19 +2,16 @@ from os.path import isfile
 import yaml
 from zope import interface
 
-from sparc.configuration.container import container
-from . import ISparcYamlDocuments
+from sparc.config.container import SparcConfigContainer
+from .interfaces import ISparcYamlConfigContainers
 
-@interface.implementer(ISparcYamlDocuments)
-class SparcYamlDocuments(object):
+@interface.implementer(ISparcYamlConfigContainers)
+class SparcYamlConfigContainers(object):
 
-    def documents(self, config):
-        config = config if not isfile(config) else open(config)
+    def containers(self, yaml_config):
+        config = yaml_config if not isfile(yaml_config) else open(yaml_config)
         for doc in yaml.load_all(config):
-            if container.SparcAppPyContainerConfiguration.is_container(doc):
-                yield container.sparcAppPyContainerConfigurationFactory(doc)
-            else:
-                yield doc
+            yield SparcConfigContainer(doc)
 
-    def first(self, config):
-        return next(self.documents(config))
+    def first(self, yaml_config):
+        return next(self.containers(yaml_config))

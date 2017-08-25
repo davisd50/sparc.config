@@ -5,8 +5,8 @@ from sparc.config.testing import SPARC_CONFIG_INTEGRATION_LAYER
 
 
 class test_suite(test_suite_mixin):
-    package = 'sparc.config.yaml'
-    module = 'documents'
+    package = 'sparc.config'
+    module = 'sequence'
     layer = SPARC_CONFIG_INTEGRATION_LAYER
 
 

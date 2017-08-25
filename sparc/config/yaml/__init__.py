@@ -1,1 +1,1 @@
-from .interfaces import ISparcYamlDocuments
+from .interfaces import ISparcYamlConfigContainers
