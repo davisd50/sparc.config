@@ -1,2 +1,2 @@
-sparc.configuration.container
+sparc.config
 ==============================
