@@ -70,3 +70,14 @@ Here's a slightly more complex config that leverages references
 >>> config = component.getUtility(yaml.ISparcYamlConfigContainers).first(yaml_config)
 >>> config.mapping().get_value('EntryType2', 'EntryType1', 'dict3') == 'value 3'
 True
+
+We can also leverage the Jinja2 template system for the yaml configs.
+>>> yaml_config = """\
+... - EntryType1:
+...    dict1: {{var1}}
+... """
+>>> vars = {'var1': 'value A'}
+>>> config = component.getUtility(yaml.ISparcYamlConfigContainers).first(yaml_config, vars)
+>>> config.mapping().get_value('EntryType1', 'dict1') == 'value A'
+True
+
