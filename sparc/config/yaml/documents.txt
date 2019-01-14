@@ -77,7 +77,27 @@ We can also leverage the Jinja2 template system for the yaml configs.
 ...    dict1: {{var1}}
 ... """
 >>> vars = {'var1': 'value A'}
->>> config = component.getUtility(yaml.ISparcYamlConfigContainers).first(yaml_config, vars)
+>>> config = component.getUtility(yaml.ISparcYamlConfigContainers).first(yaml_config, render_context=vars)
 >>> config.mapping().get_value('EntryType1', 'dict1') == 'value A'
 True
 
+Complex/long yaml files can be broken up into smaller files
+>>> import os, os.path
+>>> import sparc.config.yaml.tests
+>>> yaml_config = os.path.dirname(sparc.config.yaml.tests.__file__) + '/config/test.yaml'
+>>> config = component.getUtility(yaml.ISparcYamlConfigContainers).first(yaml_config)
+>>> mapping = config.mapping()
+>>> config.mapping().get_value('test1', 'key1') == 'value1'
+True
+
+Invalid yaml inputs raise ValueError
+>>> component.getUtility(yaml.ISparcYamlConfigContainers).first(u"bad_string")
+Traceback (most recent call last):
+ ...
+ValueError: expected yaml_config to contain valid yaml file path or string: bad_string
+>>> try:
+...     component.getUtility(yaml.ISparcYamlConfigContainers).first(
+...         os.path.dirname(sparc.config.__file__) + '/configure.zcml')
+... except ValueError:
+...     print("invalid file!")
+invalid file!

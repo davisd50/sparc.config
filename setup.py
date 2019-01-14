@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.1.0'
+version = '1.2.0'
 
 TESTS_REQUIRE = [
     'sparc.testing',
@@ -35,14 +35,15 @@ setup(name='sparc.config',
       namespace_packages=['sparc'],
       include_package_data=True,
       package_data = {
-          '': ['*.zcml']
+          '': ['*.txt', '*.zcml', '*.yaml']
         },
       zip_safe=False,
       install_requires=[
           'setuptools',
           'zope.interface',
           'zope.component',
-          'pyaml',
+          'pyyaml',
+          'pyyaml-include',
           'jinja2'
       ],
       tests_require=TESTS_REQUIRE,
