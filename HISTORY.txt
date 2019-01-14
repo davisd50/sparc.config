@@ -13,3 +13,8 @@
 
 * integrate pyyaml-include for yaml parsing
 * improve error messages for invalid yaml_config parameters
+
+1.2.1
+++++++++++++++++++
+
+* improved jinja integration to allow includes, as pyyaml-include was limited
