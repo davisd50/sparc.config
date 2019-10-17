@@ -29,7 +29,7 @@ class SparcYamlConfigContainers(object):
                                 from_string(config).render(render_context or {})
         
         
-        for doc in yaml.load_all(config):
+        for doc in yaml.load_all(config, Loader=yaml.Loader):
             try:
                 yield SparcConfigContainer(doc)
             except BrokenImplementation:
