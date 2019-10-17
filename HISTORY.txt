@@ -18,3 +18,8 @@
 ++++++++++++++++++
 
 * improved jinja integration to allow includes, as pyyaml-include was limited
+
+1.2.2
+++++++++++++++++++
+
+* fix deprecated default argument call to yaml loaded
