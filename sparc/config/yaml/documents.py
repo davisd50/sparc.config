@@ -20,7 +20,9 @@ class SparcYamlConfigContainers(object):
                 base_dir = u"{}".format(dirname(yaml_config))
                 YamlIncludeConstructor.add_to_loader_class(
                     base_dir=base_dir)
-            config = open(yaml_config).read()
+            handle = open(yaml_config)
+            config = handle.read()
+            handle.close()
         else:
             YamlIncludeConstructor.add_to_loader_class(base_dir=base_dir)
             config = yaml_config
@@ -29,7 +31,7 @@ class SparcYamlConfigContainers(object):
                                 from_string(config).render(render_context or {})
         
         
-        for doc in yaml.load_all(config, Loader=yaml.Loader):
+        for doc in yaml.load_all(config, Loader=yaml.FullLoader):
             try:
                 yield SparcConfigContainer(doc)
             except BrokenImplementation:
